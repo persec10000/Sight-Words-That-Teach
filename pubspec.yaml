@@ -1,0 +1,272 @@
+name: sightwords
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.2.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  desktop_window: ^0.3.0
+  # window_size:
+  #   git:
+  #     url: git://github.com/google/flutter-desktop-embedding.git
+  #     path: plugins/window_size
+      
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.0
+  assets_audio_player: ^2.0.13
+  audioplayers: ^0.13.4
+  path_provider: ^1.6.15
+#  device_info: ^1.0.0
+  video_player:
+  flutter_gifimage: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/like_anim.gif
+    - assets/loading1.gif
+    - assets/loading2.gif
+    - assets/image/btn_0_.png
+    - assets/image/btn_1_.png
+    - assets/image/btn_2_.png
+    - assets/image/btn_3_.png
+    - assets/image/btn_4_.png
+    - assets/image/btn_5_.png
+    - assets/image/btn_6_.png
+    - assets/image/btn_7_.png
+    - assets/image/btn_8_.png
+    - assets/image/btn_9_.png
+    - assets/image/btn_10_.png
+    - assets/image/btn_11_.png
+    - assets/image/btn_12_.png
+    - assets/image/btn_13_.png
+    - assets/image/btn_14_.png
+    - assets/image/btn_15_.png
+    - assets/image/btn_16_.png
+    - assets/image/btn_17_.png
+    - assets/image/blue_back.png
+    - assets/image/btn_back_normal.png
+    - assets/image/btn_back_pressed.png
+    - assets/image/btn_check.png
+    - assets/image/btn_uncheck.png
+    - assets/image/btn_next_normal.png
+    - assets/image/btn_next_pressed.png
+    - assets/image/bubble_back.png
+    - assets/image/bubble_back.jpg
+
+    - assets/image/card_all.png
+    - assets/image/card_away.png
+    - assets/image/card_back.png
+    - assets/image/card_big.png
+    - assets/image/card_can.png
+    - assets/image/card_here.png
+    - assets/image/card_little.png
+    - assets/image/card_look.png
+    - assets/image/card_my.png
+    - assets/image/card_no.png
+    - assets/image/card_old.png
+    - assets/image/card_one.png
+    - assets/image/card_red.png
+    - assets/image/card_sheheme.png
+    - assets/image/card_the.png
+    - assets/image/card_we.png
+
+    - assets/image/word_all.png
+    - assets/image/word_away.png
+    - assets/image/word_big.png
+    - assets/image/word_can.png
+    - assets/image/word_here.png
+    - assets/image/word_I.png
+    - assets/image/word_little.png
+    - assets/image/word_look.png
+    - assets/image/word_my.png
+    - assets/image/word_no.png
+    - assets/image/word_old.png
+    - assets/image/word_one.png
+    - assets/image/word_red.png
+    - assets/image/word_sheheme.png
+    - assets/image/word_the.png
+    - assets/image/word_we.png
+
+    - assets/image/story_all.png
+    - assets/image/story_away.png
+    - assets/image/story_big.png
+    - assets/image/story_can.png
+    - assets/image/story_here.png
+    - assets/image/story_I.png
+    - assets/image/story_little.png
+    - assets/image/story_look.png
+    - assets/image/story_my.png
+    - assets/image/story_no.png
+    - assets/image/story_old.png
+    - assets/image/story_one.png
+    - assets/image/story_red.png
+    - assets/image/story_sheheme.png
+    - assets/image/story_the.png
+    - assets/image/story_we.png
+
+    - assets/image/splash.png
+    - assets/image/CloseNormal.png
+    - assets/image/CloseSelected.png
+    - assets/image/HelloWorld.png
+    - assets/image/lbl_great.png
+    - assets/image/logo.png
+    - assets/image/logo.jpg
+    - assets/image/newlogo.png
+    - assets/image/smile_bubble.png
+
+    - assets/gif/motion-all.gif
+    - assets/gif/motion-away.gif
+    - assets/gif/motion-big.gif
+    - assets/gif/motion-can.gif
+    - assets/gif/motion-here.gif
+    - assets/gif/motion-I.gif
+    - assets/gif/motion-little.gif
+    - assets/gif/motion-look.gif
+    - assets/gif/motion-my.gif
+    - assets/gif/motion-no.gif
+    - assets/gif/motion-old.gif
+    - assets/gif/motion-one.gif
+    - assets/gif/motion-red.gif
+    - assets/gif/motion-sheheme.gif
+    - assets/gif/motion-the.gif
+    - assets/gif/motion-we.gif
+
+    - assets/ani_jpg/motion-all.jpg
+    - assets/ani_jpg/motion-away.jpg
+    - assets/ani_jpg/motion-big.jpg
+    - assets/ani_jpg/motion-can.jpg
+    - assets/ani_jpg/motion-here.jpg
+    - assets/ani_jpg/motion-I.jpg
+    - assets/ani_jpg/motion-little.jpg
+    - assets/ani_jpg/motion-look.jpg
+    - assets/ani_jpg/motion-my.jpg
+    - assets/ani_jpg/motion-no.jpg
+    - assets/ani_jpg/motion-old.jpg
+    - assets/ani_jpg/motion-one.jpg
+    - assets/ani_jpg/motion-red.jpg
+    - assets/ani_jpg/motion-sheheme.jpg
+    - assets/ani_jpg/motion-the.jpg
+    - assets/ani_jpg/motion-we.jpg
+    
+
+    - assets/sound/word_sound/word_all.mp3
+    - assets/sound/word_sound/word_away.mp3
+    - assets/sound/word_sound/word_big.mp3
+    - assets/sound/word_sound/word_can.mp3
+    - assets/sound/word_sound/word_here.mp3
+    - assets/sound/word_sound/word_I.mp3
+    - assets/sound/word_sound/word_little.mp3
+    - assets/sound/word_sound/word_look.mp3
+    - assets/sound/word_sound/word_my.mp3
+    - assets/sound/word_sound/word_no.mp3
+    - assets/sound/word_sound/word_old.mp3
+    - assets/sound/word_sound/word_one.mp3
+    - assets/sound/word_sound/word_red.mp3
+    - assets/sound/word_sound/word_sheheme.mp3
+    - assets/sound/word_sound/word_the.mp3
+    - assets/sound/word_sound/word_we.mp3
+
+    - assets/sound/sound_all.mp3
+    - assets/sound/sound_away.mp3
+    - assets/sound/sound_big.mp3
+    - assets/sound/sound_can.mp3
+    - assets/sound/sound_here.mp3
+    - assets/sound/sound_I.mp3
+    - assets/sound/sound_little.mp3
+    - assets/sound/sound_look.mp3
+    - assets/sound/sound_my.mp3
+    - assets/sound/sound_no.mp3
+    - assets/sound/sound_old.mp3
+    - assets/sound/sound_one.mp3
+    - assets/sound/sound_red.mp3
+    - assets/sound/sound_sheheme.mp3
+    - assets/sound/sound_the.mp3
+    - assets/sound/sound_we.mp3
+    - assets/sound/pop_bubble.mp3
+    - assets/sound/card_flip.mp3
+    - assets/video/motion_all.mp4
+
+    - assets/00.png
+    - assets/01.png
+    - assets/02.png
+    - assets/03.png   
+    - assets/04.png
+    - assets/05.png
+    - assets/06.png
+    - assets/07.png
+    - assets/08.png
+    - assets/09.png
+    - assets/10.png        
+    - assets/11.png        
+    - assets/12.png        
+    - assets/13.png        
+    - assets/14.png        
+    - assets/15.png        
+    - assets/splash.gif
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: GoogleSans
+      fonts:
+        - asset: assets/GoogleSans-Medium.ttf  
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
