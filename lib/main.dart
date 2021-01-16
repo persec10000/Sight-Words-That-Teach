@@ -130,7 +130,9 @@ void main() async {
     {
       double win_dx=20;
       double win_dy = 50;
-      await DesktopWindow.setWindowSize(Size(443+win_dx, 960+win_dy));
+      double win_w = 1280;//443;
+      double win_h = 800;//960
+      await DesktopWindow.setWindowSize(Size(win_w+win_dx, win_h+win_dy));
       // var window = await window_size.getWindowInfo();
       // if (window.screen != null) {
       //   final screenFrame = window.screen.visibleFrame;
@@ -247,6 +249,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
 
+    AppGlobals.width = MediaQuery.of(context).size.width;
+    AppGlobals.height = MediaQuery.of(context).size.height;
     List<Widget> listArray = [];
 //    listArray.add(
 ////      new Image.asset('assets/gif/motion-all.gif',fit:BoxFit.fitHeight),
@@ -281,62 +285,213 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 //      ),
 //    );
 
+
+
+    if((AppGlobals.isMac) || (AppGlobals.isWin) || AppGlobals.isWeb)
+    {
     listArray.add(              
       new Image.asset(
       'assets/image/logo.jpg',
-      height: MediaQuery.of(context).size.height*0.2,
+      height: MediaQuery.of(context).size.height*0.4,
       width: MediaQuery.of(context).size.width*0.8,
     ),);
-    listArray.add(              
-      FlatButton(
-      onPressed: (){
-        Navigator.push(context, 
-        MaterialPageRoute(builder: (context) => CardGamePage(), fullscreenDialog: true));
-        // Navigator.push(context, 
-        // MaterialPageRoute(builder: (context) => BubbleGame()));
-      },
-      padding: EdgeInsets.only(left:50),//.all(0.0),
-      child: Image.asset('assets/image/btn_0_.png')
-    ),);
-    listArray.add(              
-      FlatButton(
-      onPressed: (){
-        Navigator.push(context, 
-        MaterialPageRoute(builder: (context) => Bubbles(), fullscreenDialog: true));//CardGame
-      },
-      padding: EdgeInsets.only(left:50),//padding: EdgeInsets.all(0.0),
-      child: Image.asset('assets/image/btn_1_.png')
-    ),);
-              
 
-
-    for (var i = AppGlobals.listLectureCompleted.length - 1; i >= 2 ; i-=1)
-    {
       listArray.add(
         Row(
             // align the text to the left instead of centered
             crossAxisAlignment: CrossAxisAlignment.center,                  
             children: <Widget>[
-              IconButton(
-                onPressed: (){ },
-                icon: Image.asset(getStatusImage(i)),
-                iconSize: MediaQuery.of(context).size.width * 0.1,
-                padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*0.05),
-              ),
-        
               FlatButton(
-                onPressed: (){
-                  Navigator.push(context, 
-                  MaterialPageRoute(builder: (context) => StoryPage(storyid:i), fullscreenDialog: true)).then((value) => {
-                    setState(() {})
-                  });
-                },
-                child: Image.asset(getLectureImage(i),width: MediaQuery.of(context).size.width * 0.75,),
-                padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*0.05),
-              ),
+              onPressed: (){
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => CardGamePage(), fullscreenDialog: true));
+                // Navigator.push(context, 
+                // MaterialPageRoute(builder: (context) => BubbleGame()));
+              },
+              padding: EdgeInsets.only(left:MediaQuery.of(context).size.width * 0.05),//.all(0.0),
+              child: Image.asset('assets/image/btn_0_.png',width: MediaQuery.of(context).size.width * 0.4,)
+              ),        
+        
+
+              FlatButton(
+              onPressed: (){
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => Bubbles(), fullscreenDialog: true));
+                // Navigator.push(context, 
+                // MaterialPageRoute(builder: (context) => BubbleGame()));
+              },
+              padding: EdgeInsets.only(left:MediaQuery.of(context).size.width * 0.1),//.all(0.0),
+              child: Image.asset('assets/image/btn_1_.png',width: MediaQuery.of(context).size.width * 0.4,)
+              ),        
+
+
             ],
-        )
-      );
+          )
+        );
+
+    }
+    else 
+    {
+      listArray.add(              
+      new Image.asset(
+      'assets/image/logo.jpg',
+      height: MediaQuery.of(context).size.height*0.2,
+      width: MediaQuery.of(context).size.width*0.8,
+    ),);
+
+    listArray.add(              
+        FlatButton(
+        onPressed: (){
+          Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => CardGamePage(), fullscreenDialog: true));
+          // Navigator.push(context, 
+          // MaterialPageRoute(builder: (context) => BubbleGame()));
+        },
+        padding: EdgeInsets.only(left:50),//.all(0.0),
+        child: Image.asset('assets/image/btn_0_.png')
+      ),);
+      listArray.add(
+        FlatButton(
+        onPressed: (){
+          Navigator.push(context,
+          MaterialPageRoute(builder: (context) => Bubbles(), fullscreenDialog: true));//CardGame
+        },
+        padding: EdgeInsets.only(left:50),//padding: EdgeInsets.all(0.0),
+        child: Image.asset('assets/image/btn_1_.png')
+      ),);
+
+    }
+
+    var nRowItems = 1;          
+    var nRowItemWidthIcon = 0.1;
+    var nRowItemWidthBtn = 0.75;
+    if((AppGlobals.isMac) || (AppGlobals.isWin))
+    {
+      nRowItems = 4;
+      nRowItemWidthIcon = nRowItemWidthIcon / nRowItems;
+      nRowItemWidthBtn = nRowItemWidthBtn / nRowItems;
+    }
+
+
+    for (var i = AppGlobals.listLectureCompleted.length - 1; i >= 2 ; i-=nRowItems)
+    {
+      if(AppGlobals.isAndroid || AppGlobals.isiOS)
+      {
+        listArray.add(
+          Row(
+              // align the text to the left instead of centered
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){ },
+                  icon: Image.asset(getStatusImage(i)),
+                  iconSize: MediaQuery.of(context).size.width * nRowItemWidthIcon,
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StoryPage(storyid:i), fullscreenDialog: true)).then((value) => {
+                      setState(() {})
+                    });
+                  },
+                  child: Image.asset(getLectureImage(i),width: MediaQuery.of(context).size.width * nRowItemWidthBtn,),
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+              ],
+            )
+          );
+
+      }else{
+
+        listArray.add(
+          Row(
+              // align the text to the left instead of centered
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){ },
+                  icon: Image.asset(getStatusImage(i)),
+                  iconSize: MediaQuery.of(context).size.width * nRowItemWidthIcon,
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StoryPage(storyid:i), fullscreenDialog: true)).then((value) => {
+                      setState(() {})
+                    });
+                  },
+                  child: Image.asset(getLectureImage(i),width: MediaQuery.of(context).size.width * nRowItemWidthBtn,),
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                IconButton(
+                  onPressed: (){ },
+                  icon: Image.asset(getStatusImage(i-1)),
+                  iconSize: MediaQuery.of(context).size.width * nRowItemWidthIcon,
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StoryPage(storyid:i-1), fullscreenDialog: true)).then((value) => {
+                      setState(() {})
+                    });
+                  },
+                  child: Image.asset(getLectureImage(i-1),width: MediaQuery.of(context).size.width * nRowItemWidthBtn,),
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+
+                IconButton(
+                  onPressed: (){ },
+                  icon: Image.asset(getStatusImage(i-2)),
+                  iconSize: MediaQuery.of(context).size.width * nRowItemWidthIcon,
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StoryPage(storyid:i-2), fullscreenDialog: true)).then((value) => {
+                      setState(() {})
+                    });
+                  },
+                  child: Image.asset(getLectureImage(i-2),width: MediaQuery.of(context).size.width * nRowItemWidthBtn,),
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                IconButton(
+                  onPressed: (){ },
+                  icon: Image.asset(getStatusImage(i-3)),
+                  iconSize: MediaQuery.of(context).size.width * nRowItemWidthIcon,
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StoryPage(storyid:i-3), fullscreenDialog: true)).then((value) => {
+                      setState(() {})
+                    });
+                  },
+                  child: Image.asset(getLectureImage(i-3),width: MediaQuery.of(context).size.width * nRowItemWidthBtn,),
+                  padding: EdgeInsets.only(left:MediaQuery.of(context).size.width*nRowItemWidthIcon/2),
+                ),
+
+
+
+              ],
+            )
+          );
+
+      }
+
     }
 
     // This method is rerun every time setState is called, for instance as done
@@ -351,6 +506,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
+      backgroundColor: Colors.white,
       body: Container(
         // decoration: BoxDecoration(
         //   image: DecorationImage(
@@ -537,8 +693,26 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
       asAPlayer.open(Audio(strvoice) );
     }  
 
+
+    // imgStory = AssetImage(strgif);    
+    if (AppGlobals.listGifStopped[widget.storyid] == 0 )
+    {
+      Timer.periodic(Duration(seconds: listGifDuration[widget.storyid]+5 ), (Timer t)  {
+        // 1 ~ listGifDurationDs[widget.storyid]
+          nLoaded = 2;
+          t.cancel();
+          if(AppGlobals.listGifStopped[widget.storyid] == 0 )
+          {
+            AppGlobals.listLectureCompleted[widget.storyid] = 1;
+          }
+            
+          setState(() {});
+      });
+    }
+
     if (AppGlobals.listGifStopped[widget.storyid] == 1 )
     {
+      AppGlobals.listGifStopped[widget.storyid] = 0;
       nLoaded = 2;
       fetchGif(AssetImage(strgif)).then((value)  {
         gifFrames = value;
@@ -550,7 +724,10 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
         tickerFuture.timeout(Duration(seconds: listGifDuration[widget.storyid]), onTimeout:  () {
           controller.forward(from: 0);
           controller.stop(canceled: true);
-          AppGlobals.listLectureCompleted[widget.storyid] = 1;
+          if(AppGlobals.listGifStopped[widget.storyid] == 0 )
+          {
+              AppGlobals.listLectureCompleted[widget.storyid] = 1;
+          }
         });
         //controller.reset();
         
@@ -567,18 +744,7 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
 
     
 
-    // imgStory = AssetImage(strgif);    
-    if (AppGlobals.listGifStopped[widget.storyid] == 0 )
-    {
-      Timer.periodic(Duration(seconds: listGifDuration[widget.storyid]+5 ), (Timer t)  {
-        // 1 ~ listGifDurationDs[widget.storyid]
-          nLoaded = 2;
-          t.cancel();
-          AppGlobals.listLectureCompleted[widget.storyid] = 1;
-          setState(() {});
-      });
 
-    }
 
   }
 
@@ -667,11 +833,11 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
         );
 
     Row rowBtns;
-    if(AppGlobals.isTablet == true){
+    if((AppGlobals.isTablet == true) || (AppGlobals.isMac) || (AppGlobals.isWin) || AppGlobals.isWeb){
       rowBtns = Row(
         // align the text to the left instead of centered
-        //  crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           btnHome,
         ],
@@ -689,7 +855,7 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
       );
     }
 
-;
+
     if(nLoaded == 1)
     {
       if(isLandscapeMode == 1)
@@ -734,6 +900,20 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
         );
       
       }else{
+        if(AppGlobals.isMac || AppGlobals.isWin || AppGlobals.isWeb)
+        {
+          return Scaffold(
+            floatingActionButton: btnHome,
+            body: Center(                      
+                child: GifImage(
+                    controller: controller,
+                    image:  AssetImage(strgif),
+                  ),              
+            ),
+            
+          );
+              
+        }
         return Scaffold(
 
           body: Center(
@@ -796,6 +976,19 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
         );      
 
       }else{
+        if(AppGlobals.isMac || AppGlobals.isWin || AppGlobals.isWeb)
+        {
+          return Scaffold(
+            floatingActionButton: btnHome,
+            body: Center(                      
+                child: FlatButton(
+                      onPressed: (){
+                      },
+                      child: new Image.asset(strgif),
+                    ),    
+            ),          
+          );              
+        }
         return Scaffold(
 
           body: Center(
@@ -857,6 +1050,23 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
         );
     
       }else{
+        if(AppGlobals.isMac || AppGlobals.isWin || AppGlobals.isWeb)
+        {          
+          return Scaffold(
+            floatingActionButton: btnHome,
+            body: Center(                
+                child: FlatButton(
+                      onPressed: (){
+                      },
+
+                      child: new Image.asset(listAniFirst[widget.storyid]), 
+                    ), 
+              
+            ),
+            
+          );      
+        }
+
         return Scaffold(
           body: Center(                
               child: ListView(
@@ -878,6 +1088,7 @@ class _StoryPageState extends State<StoryPage> with SingleTickerProviderStateMix
           ),
           
         );      
+      
       }
  
     }
